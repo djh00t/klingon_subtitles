@@ -1,0 +1,6 @@
+watch_directories:
+  - /test/dir1
+  - /test/dir2
+output_extension: .srt
+huggingface_model: openai/whisper-tiny
+log_level: INFO

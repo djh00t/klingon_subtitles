@@ -1,0 +1,31 @@
+.
+├── Dockerfile
+├── Makefile
+├── README.md
+├── age.agekey
+├── docker-compose.yaml
+├── poetry.lock
+├── pyproject.toml
+├── subtitle_generator
+│   ├── config
+│   │   └── config.yaml
+│   ├── subtitle_generator
+│   │   ├── __init__.py
+│   │   ├── __main__.py
+│   │   ├── processor.py
+│   │   ├── srt_generator.py
+│   │   ├── sub_tools.py
+│   │   └── watcher.py
+│   └── tests
+│       ├── test_config.yaml
+│       ├── test_main.py
+│       ├── test_processor.py
+│       ├── test_srt_generator.py
+│       ├── test_sub_tools.py
+│       ├── test_subtitle_generator.py
+│       └── test_watcher.py
+├── tests
+│   └── test_main.py
+└── tree.txt
+
+6 directories, 23 files

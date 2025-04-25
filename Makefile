@@ -43,23 +43,9 @@ install-python:
 install-poetry:
 	@curl -sSL https://install.python-poetry.org | python3 -
 
-# Build the package
-build: clean
-	poetry build
-
-# Cleanup python caches and other artifacts
-clean:
-	rm -rf dist/ *.egg-info __pycache__ .pytest_cache
-	find . -type d -name "__pycache__" -exec rm -r {} +
-	find . -type d -name ".pytest_cache" -exec rm -r {} +
-
-# Publish the package to PyPI
-publish: build
-	poetry publish --username __token__ --password $(PYPI_TOKEN)
-
-# Run tests
-test:
-	poetry run pytest
+# Run the application
+run:
+	poetry run python -m subtitle_generator
 
 # Build the docker images
 docker-build:
@@ -100,3 +86,45 @@ setup-dev: check-python check-poetry
 	poetry install
 
 .PHONY: build clean docker-build docker-push setup-dev check-python check-poetry install-python install-poetry publish test
+.PHONY: clean install build test lint format publish help
+
+# Variables
+PYTHON := python3
+POETRY := poetry
+
+# Default target
+.DEFAULT_GOAL := help
+
+clean: ## Remove build artifacts and cache files
+	@echo "Cleaning up..."
+	rm -rf build dist .eggs *.egg-info
+	find . -type d -name '__pycache__' -exec rm -rf {} +
+	find . -type f -name '*.pyc' -delete
+
+install: ## Install project dependencies
+	@echo "Installing dependencies..."
+	$(POETRY) install
+
+build: clean ## Build the project
+	@echo "Building the project..."
+	$(POETRY) build
+
+test: ## Run tests
+	@echo "Running tests..."
+	$(POETRY) run pytest
+
+lint: ## Run linter
+	@echo "Running linter..."
+	$(POETRY) run flake8 subtitle_generator tests
+
+format: ## Format code
+	@echo "Formatting code..."
+	$(POETRY) run black subtitle_generator tests
+
+publish: build ## Publish to PyPI
+	@echo "Publishing to PyPI..."
+	$(POETRY) publish
+
+help: ## Display this help message
+	@echo "Available commands:"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

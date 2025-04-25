@@ -1,0 +1,6 @@
+watch_directories:
+  - ./data/movies/
+  - ./data/tv/
+output_extension: .srt
+huggingface_model: openai/whisper-small  # Options: openai/whisper-tiny, openai/whisper-base, etc.
+log_level: INFO  # or DEBUG for more detailed logging

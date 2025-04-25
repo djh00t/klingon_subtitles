@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "klingon-subtitles"
+version = "0.1.0"
+description = "Make sure content always has subtitles"
+authors = ["David Hooton <david@hooton.org>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.12.*"
+numpy = "^2.0.0"
+ffmpeg-python = "^0.2.0"
+pysrt = "^1.1.2"
+srt = "^3.5.3"
+watchdog = "^5.0.2"
+moviepy = "^1.0.3"
+transformers = "^4.45.0"
+pyyaml = "^6.0.2"
+numba = "^0.60.0"
+llvmlite = "^0.43.0"
+pyannote-audio = "^3.3.2"
+tokenizers = "^0.20"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+pytest-mock = "^3.14.0"
+klingon-tools = "^2.1.5"
+ipykernel = "^6.29.5"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

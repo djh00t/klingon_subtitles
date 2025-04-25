@@ -1,0 +1,8 @@
+.aider*
+.pytest_cache
+.venv
+archive
+data
+.python_version
+__pycache__
+age.agekey
