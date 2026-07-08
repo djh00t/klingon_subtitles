@@ -22,7 +22,7 @@ pyannote-audio = "^3.3.2"
 tokenizers = "^0.21.1"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^8.3.5"
+pytest = ">=8.3.5,<10.0.0"
 pytest-cov = "^6.1.1"
 pytest-mock = "^3.14.0"
 klingon-tools = "^2.1.6"
